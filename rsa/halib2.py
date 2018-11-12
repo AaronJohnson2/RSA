@@ -1,6 +1,7 @@
 import argparse
 
 def arg_return(mode):
+    #Encryption / Decryption Function Mode
     if ~mode:
         parser = argparse.ArgumentParser(description='Encrypt/Decrypt integer with RSA.')
         parser.add_argument('-k', help="Key file.")
@@ -15,6 +16,7 @@ def arg_return(mode):
 
         return args
 
+    #RSA keygen mode
     else:
         parser = argparse.ArgumentParser(description='Generate private/public RSA keys.')
         parser.add_argument('-p', help="Public key file.")
