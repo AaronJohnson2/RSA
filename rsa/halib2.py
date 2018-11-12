@@ -1,5 +1,6 @@
 import argparse
 
+#Return argument datastructure for specified process
 def arg_return(mode):
     #Encryption / Decryption Function Mode
     if ~mode:
