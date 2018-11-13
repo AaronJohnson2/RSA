@@ -24,14 +24,16 @@ if __name__ == "__main__":
     private_file = open(args.s, 'w')
 
     #Public File
-    public_file.write(str(math.floor(math.log(N, 2))+1)+'\n')
+    #public_file.write(str(math.floor(math.log(N, 2))+1)+'\n')
+    public_file.write(str(2*n)+'\n')
     public_file.write(str(N)+'\n')
-    public_file.write(str(e)+'\n')
+    public_file.write(str(e))
 
     #Private File
-    private_file.write(str(math.floor(math.log(N,2))+1)+'\n')
+    #private_file.write(str(math.floor(math.log(N,2))+1)+'\n')
+    private_file.write(str(2*n)+'\n')
     private_file.write(str(N)+'\n')
-    private_file.write(str(d)+'\n')
+    private_file.write(str(d))
 
     public_file.close()
     private_file.close()
