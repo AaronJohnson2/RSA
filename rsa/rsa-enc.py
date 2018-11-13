@@ -40,7 +40,8 @@ if __name__ == "__main__":
     c = pow(m_hat,e,N)
 
     cipher_file.write(str(c))
-
+    
+    print(m_hat)
     message_file.close()
     public_file.close()
     cipher_file.close()
