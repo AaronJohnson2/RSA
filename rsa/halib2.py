@@ -31,3 +31,7 @@ def arg_return(mode):
                 exit()
 
         return args
+
+#l function
+def l(n):
+        return 2*n - 4
