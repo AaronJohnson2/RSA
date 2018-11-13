@@ -3,7 +3,7 @@ import argparse
 #Return argument datastructure for specified process
 def arg_return(mode):
     #Encryption / Decryption Function Mode
-    if ~mode:
+    if not mode:
         parser = argparse.ArgumentParser(description='Encrypt/Decrypt integer with RSA.')
         parser.add_argument('-k', help="Key file.")
         parser.add_argument('-i', help="Input file.")
