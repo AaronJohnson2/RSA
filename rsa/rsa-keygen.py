@@ -2,13 +2,13 @@
 #Course: COSC 483
 #Project 2
 
-import halib2_Electric_Boogaloo
+from halib2_Electric_Boogaloo import arg_return, halib_pow
 import math
 from Crypto.Util import number
 
 if __name__ == "__main__":
     #Read in cmd line arguments
-    args = halib2_Electric_Boogaloo.arg_return(1)    
+    args = arg_return(1)    
 
     #Set e and n
     e = 3

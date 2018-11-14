@@ -2,12 +2,12 @@
 #Course: COSC 483
 #Project 2
 
-import halib2_Electric_Boogaloo
+from halib2_Electric_Boogaloo import arg_return, halib_pow
 import math
 
 if __name__ == "__main__":
     #Read in cmd line arguments
-    args = halib2_Electric_Boogaloo.arg_return(0)    
+    args = arg_return(0)    
 
     #Open files
     private_file = open(args.k, "r")    
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     c = int(cipher_file.read())
 
     #Decrypt cipher text
-    m_hat = pow(c, d, N)
+    m_hat = halib_pow(c, d, N)
     m_Bytes = bytes(m_hat.to_bytes(int(n/8), byteorder='big'))
 
     #Find end of padding

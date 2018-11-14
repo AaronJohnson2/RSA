@@ -4,13 +4,13 @@
 
 #import sys
 #sys.path.append("lib")
-import halib2_Electric_Boogaloo
+from halib2_Electric_Boogaloo import arg_return, halib_pow
 import math
 import os
 
 if __name__ == "__main__":
     #Read in cmd line arguments
-    args = halib2_Electric_Boogaloo.arg_return(0)    
+    args = arg_return(0)    
 
     #Open files
     public_file = open(args.k, "r")    
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     #Concatonation and message encryption 
     m_hat = int.from_bytes(bytes.fromhex('0002') + r + bytes.fromhex('00') + hexM, byteorder='big')
-    c = pow(m_hat,e,N)
+    c = halib_pow(m_hat,e,N)
 
     #Write cipher to file
     cipher_file.write(str(c))
