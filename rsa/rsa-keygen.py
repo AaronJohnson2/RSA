@@ -6,6 +6,7 @@ if __name__ == "__main__":
     args = halib2.arg_return(1)    
 
     e = 3
+    #e = 2^16 + 1
     n = int(args.n)
 
     while True:

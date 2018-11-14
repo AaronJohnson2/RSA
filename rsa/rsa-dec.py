@@ -15,4 +15,26 @@ if __name__ == "__main__":
 
     c = int(cipher_file.read())
     m_hat = pow(c, d, N)
-    print(m_hat)
+
+    m_Bytes = bytes(m_hat.to_bytes(int(n/8), byteorder='big'))
+
+    zero_count = 0
+    index = 0
+    for byte in m_Bytes:
+
+        if byte == 0:
+            zero_count+=1
+
+            if zero_count == 2:
+                break
+
+        index+=1
+    
+    m = str((m_Bytes[index+1:]).hex())
+
+    message_file.write(m + '\n')
+
+    private_file.close()
+    cipher_file.close()
+    message_file.close()
+    #print(m_hat)

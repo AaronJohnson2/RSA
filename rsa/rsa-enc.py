@@ -19,29 +19,28 @@ if __name__ == "__main__":
     tmpM = message_file.read().replace('\n','')
     hexM = bytes.fromhex(tmpM)
     m = int.from_bytes(hexM, byteorder='big')
-    #size_m = math.floor(math.log(m,2))+1
-#    print(size_N)
 
     size_m = len(hexM)*8
 
-#    print(size_m)
-
-    #if size_m > (size_N - 2):
-    if size_m > (size_N - 8):
+    if size_m > (n/2 - 24):
         print("Invalid message size")
         exit(0)
 
-    #print(os.urandom((size_m)/8 - 2))
-    r = os.urandom(int((size_m)/8 - 1))
-#    print(r)
-#    print(hexM)
+    r = bytearray()
+    count = 0
+    while count < (n/8) - len(hexM) - 3:
+        tmpByte = os.urandom(1)
+        tmpInt = int.from_bytes(tmpByte, byteorder='big')
 
-    m_hat = int.from_bytes(r + hexM, byteorder='big')
+        if tmpInt != 0:
+            r += tmpByte
+            count+=1
+
+    m_hat = int.from_bytes(bytes.fromhex('0002') + r + bytes.fromhex('00') + hexM, byteorder='big')
     c = pow(m_hat,e,N)
 
     cipher_file.write(str(c))
     
-    print(m_hat)
     message_file.close()
     public_file.close()
     cipher_file.close()
