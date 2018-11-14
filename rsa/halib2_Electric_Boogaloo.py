@@ -2,7 +2,9 @@
 #Course: COSC 483
 #Project 2
 import argparse
+import os
 
+from Crypto.Random import random
 #Return argument datastructure for specified process
 
 
@@ -65,3 +67,24 @@ def halib_pow(b, e, m):
 
     #Return answer
     return product%m
+
+#Returns random prime of specified bit length via Fermat's Probabilistic Prime Test
+def halib_getprime(bits):
+    #Threshold for number of a's to check
+    theta = 30 
+
+    #Initial candidate
+    n = random.randrange(2**(bits-1), 2**bits-1)
+
+    #Perform prime test
+    count = 0
+    while count < theta:
+        a = random.randrange(2, n-1)
+        tmp = halib_pow(a,n-1,n) 
+        count += 1
+
+        if tmp != 1:
+            n = random.randrange(2**(bits-1), 2**bits-1)
+            count = 0
+
+    return n
