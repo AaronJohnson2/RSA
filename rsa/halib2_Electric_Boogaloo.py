@@ -1,3 +1,6 @@
+#Students: Hayden Coffey, Aaron Johnson
+#Course: COSC 483
+#Project 2
 import argparse
 
 #Return argument datastructure for specified process

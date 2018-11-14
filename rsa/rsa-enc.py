@@ -1,31 +1,40 @@
+#Students: Hayden Coffey, Aaron Johnson
+#Course: COSC 483
+#Project 2
+
 #import sys
 #sys.path.append("lib")
-import halib2
+import halib2_Electric_Boogaloo
 import math
 import os
 
 if __name__ == "__main__":
-    args = halib2.arg_return(0)    
+    #Read in cmd line arguments
+    args = halib2_Electric_Boogaloo.arg_return(0)    
 
+    #Open files
     public_file = open(args.k, "r")    
     message_file = open(args.i, "r")
     cipher_file = open(args.o, 'w')
 
+    #Read in public key data
     size_N = int(public_file.readline())
     N = int(public_file.readline())
     e = int(public_file.readline())
     n = math.ceil(size_N/2)
 
+    #Read in message and convert to bytes
     tmpM = message_file.read().replace('\n','')
     hexM = bytes.fromhex(tmpM)
-    m = int.from_bytes(hexM, byteorder='big')
-
     size_m = len(hexM)*8
+    #m = int.from_bytes(hexM, byteorder='big')
 
+    #Verify message length
     if size_m > (n/2 - 24):
         print("Invalid message size")
         exit(0)
 
+    #Generate random padding
     r = bytearray()
     count = 0
     while count < (n/8) - len(hexM) - 3:
@@ -36,11 +45,14 @@ if __name__ == "__main__":
             r += tmpByte
             count+=1
 
+    #Concatonation and message encryption 
     m_hat = int.from_bytes(bytes.fromhex('0002') + r + bytes.fromhex('00') + hexM, byteorder='big')
     c = pow(m_hat,e,N)
 
+    #Write cipher to file
     cipher_file.write(str(c))
-    
+
+    #Close files   
     message_file.close()
     public_file.close()
     cipher_file.close()
