@@ -71,11 +71,11 @@ def halib_pow(b, e, m):
 #Returns random prime of specified bit length via Fermat's Probabilistic Prime Test
 def halib_getprime(bits):
     #Threshold for number of a's to check
-    theta = 30 
+    theta = 5 
 
     #Initial candidate
     n = random.randrange(2**(bits-1), 2**bits-1)
-
+    print(n)
     #Perform prime test
     count = 0
     while count < theta:
@@ -85,6 +85,7 @@ def halib_getprime(bits):
 
         if tmp != 1:
             n = random.randrange(2**(bits-1), 2**bits-1)
+            print(n)
             count = 0
 
     return n
