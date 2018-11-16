@@ -73,7 +73,6 @@ def halib_getprime(bits):
     theta = 5
 
     #Initial candidate
-    #n = random.randrange(2**(bits-1), 2**bits-1)
     n = halib_getodd(bits)
 
     #Perform prime test
@@ -84,9 +83,7 @@ def halib_getprime(bits):
         count += 1
 
         if tmp != 1:
-            #        n = random.randrange(2**(bits-1), 2**bits-1)
             n = halib_getodd(bits)
-            #print(n)
             count = 0
 
     return n
