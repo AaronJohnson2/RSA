@@ -74,8 +74,9 @@ def halib_getprime(bits):
     theta = 5 
 
     #Initial candidate
-    n = random.randrange(2**(bits-1), 2**bits-1)
-    print(n)
+    #n = random.randrange(2**(bits-1), 2**bits-1)
+    n = halib_getodd(bits) 
+
     #Perform prime test
     count = 0
     while count < theta:
@@ -84,8 +85,17 @@ def halib_getprime(bits):
         count += 1
 
         if tmp != 1:
-            n = random.randrange(2**(bits-1), 2**bits-1)
-            print(n)
+    #        n = random.randrange(2**(bits-1), 2**bits-1)
+            n = halib_getodd(bits) 
+            #print(n)
             count = 0
+
+    return n
+
+#Return odd number of specified bit length
+def halib_getodd(bits):
+    n = 0
+    while n % 2 == 0:
+        n = random.randrange(2**(bits-1), 2**bits-1)
 
     return n

@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     #Verify message length
     if size_m > (n/2 - 24):
-        print("Invalid message size")
+        print("Message too large for N")
         exit(0)
 
     #Generate random padding

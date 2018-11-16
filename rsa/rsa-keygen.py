@@ -16,15 +16,13 @@ if __name__ == "__main__":
 
     #Generate p such (p-1) is co-prime with e
     while True:
-        p = number.getPrime(n) 
-        #p = halib_getprime(n)
+        p = halib_getprime(n)
         if (p-1)%e:
             break
 
     #Generate q such (q-1) is co-prime with e
     while True:
-        q = number.getPrime(n) 
-        #q = halib_getprime(n)
+        q = halib_getprime(n)
         if (q-1)%e:
             break
 
