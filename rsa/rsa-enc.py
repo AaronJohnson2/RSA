@@ -2,8 +2,6 @@
 #Course: COSC 483
 #Project 2
 
-#import sys
-#sys.path.append("lib")
 from halib2_Electric_Boogaloo import arg_return, halib_pow
 import math
 import os

@@ -5,9 +5,8 @@ import argparse
 import os
 
 from Crypto.Random import random
+
 #Return argument datastructure for specified process
-
-
 def arg_return(mode):
     #Encryption / Decryption Function Mode
     if not mode:
@@ -52,13 +51,13 @@ def halib_pow(b, e, m):
     for bit in binE[::-1]:
         if int(bit) == 1:
             two_powers.append(count)
-        count+=1
+        count += 1
 
     #Compute successive squares up to most significant power of 2
     raised_values = []
-    raised_values.append(b%m)
-    for i in range(1,two_powers[-1]+1):
-        raised_values.append((raised_values[i-1]**2)%m)
+    raised_values.append(b % m)
+    for i in range(1, two_powers[-1]+1):
+        raised_values.append((raised_values[i-1]**2) % m)
 
     #Compute product of needed squares
     product = 1
@@ -66,27 +65,27 @@ def halib_pow(b, e, m):
         product *= raised_values[i]
 
     #Return answer
-    return product%m
+    return product % m
 
 #Returns random prime of specified bit length via Fermat's Probabilistic Prime Test
 def halib_getprime(bits):
     #Threshold for number of a's to check
-    theta = 5 
+    theta = 5
 
     #Initial candidate
     #n = random.randrange(2**(bits-1), 2**bits-1)
-    n = halib_getodd(bits) 
+    n = halib_getodd(bits)
 
     #Perform prime test
     count = 0
     while count < theta:
         a = random.randrange(2, n-1)
-        tmp = halib_pow(a,n-1,n) 
+        tmp = halib_pow(a, n-1, n)
         count += 1
 
         if tmp != 1:
-    #        n = random.randrange(2**(bits-1), 2**bits-1)
-            n = halib_getodd(bits) 
+            #        n = random.randrange(2**(bits-1), 2**bits-1)
+            n = halib_getodd(bits)
             #print(n)
             count = 0
 
